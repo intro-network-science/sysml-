@@ -7,14 +7,14 @@ It concatenates the lines to form a complete row and then writes it to the outpu
 :arg input
 :arg output
 
-example: python convert.py input.csv output.csv
+example: python csv_normalizer.py input.csv output.csv
 """
 
 import csv
 import sys
 
 if len(sys.argv) < 3:
-    print("Usage: python convert.py input_file output_file")
+    print("Usage: python csv_normalizer.py input_file output_file")
     sys.exit()
 
 input_file = sys.argv[1]
