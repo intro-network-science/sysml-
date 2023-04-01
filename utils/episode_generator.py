@@ -1,3 +1,21 @@
+"""
+This script takes in multiple input CSV files, an output file path, and a bucket length as command line arguments.
+
+:arg input_files
+:arg output_file
+:arg bucket_length
+
+example: python episode_generator.py input1.csv input2.csv output.json 3
+
+It reads each input file, and for each author in the file, creates a list of indices of rows in the CSV file where that author appears.
+These lists are then split into "buckets" of the specified length, with the default value of each bucket set to -1.
+
+The results are written out to a JSON file with the specified output file path.
+
+If the command line arguments are not provided correctly, the script will print an error message and exit with a status code of 1.
+Finally, it prints a message indicating where the output was written.
+"""
+
 import csv
 import json
 import os
