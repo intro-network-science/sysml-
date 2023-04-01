@@ -1,3 +1,15 @@
+"""
+This code takes an input file and an output file as arguments from the command line. It reads the input file, which has a custom delimiter |, and converts it into a CSV format and writes it to the output file.
+The input file can have multiple lines, each line contains data separated by the | delimiter.
+The code also checks if the last field in any row ends with a backslash, which indicates that the next line contains the continuation of the same field.
+It concatenates the lines to form a complete row and then writes it to the output file in CSV format.
+
+:arg input
+:arg output
+
+example: python convert.py input.csv output.csv
+"""
+
 import csv
 import sys
 
