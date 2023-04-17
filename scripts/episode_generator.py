@@ -34,27 +34,27 @@ for input_file in input_files:
     with open(input_file, 'r') as infile:
         reader = csv.DictReader(infile)
 
-        author_indices = {}
+        username_indices = {}
 
         for i, row in enumerate(reader):
-            author = row['author']
+            username = row['username']
 
-            if author in author_indices:
-                author_indices[author].append(i)
+            if username in username_indices:
+                username_indices[username].append(i)
             else:
-                author_indices[author] = [i]
+                username_indices[username] = [i]
 
-        for author in author_indices:
-            indices = author_indices[author]
+        for username in username_indices:
+            indices = username_indices[username]
             num_buckets = (len(indices) + bucket_length - 1) // bucket_length
             author_buckets = [[-1] * bucket_length for _ in range(num_buckets)]
             for i, idx in enumerate(indices):
                 bucket_idx = i // bucket_length
                 inner_idx = i % bucket_length
                 author_buckets[bucket_idx][inner_idx] = idx
-            author_indices[author] = author_buckets
+            username_indices[username] = author_buckets
 
-        results[os.path.splitext(os.path.basename(input_file))[0]] = author_indices
+        results[os.path.splitext(os.path.basename(input_file))[0]] = username_indices
 
 with open(output_file, 'w') as outfile:
     json.dump(results, outfile)
